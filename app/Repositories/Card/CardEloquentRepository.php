@@ -16,4 +16,13 @@ class CardEloquentRepository implements CardRepositoryInterface
             throw new ErrorOnMysqlException();
         }
     }
+
+    public function insert(array $data): array
+    {
+        try {
+            return Card::create($data)->toArray();
+        } catch (\Exception $exception) {
+            throw new ErrorOnMysqlException();
+        }
+    }
 }
