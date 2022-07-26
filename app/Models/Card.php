@@ -9,4 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Card extends Model
 {
     use SoftDeletes, HasFactory;
+
+    protected $fillable = ['public_number', 'account_id'];
 }
