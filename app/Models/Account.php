@@ -9,4 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Account extends Model
 {
     use SoftDeletes, HasFactory;
+
+    protected $fillable = ['public_uuid', 'balance', 'user_id'];
 }
