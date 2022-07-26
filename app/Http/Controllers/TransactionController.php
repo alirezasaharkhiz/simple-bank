@@ -45,7 +45,7 @@ class TransactionController extends Controller
             //TODO: develop response service
             return response()->json([
                 'message' => 'Transaction submitted',
-                'Error' => null,
+                'error' => null,
                 'data' => [
                     'from_card' => $fromCard['public_number'],
                     'to_card' => $toCard['public_number'],
@@ -57,21 +57,21 @@ class TransactionController extends Controller
         } catch (CardNotFoundException|AccountNotFoundException|InsufficientBalanceException $exception) {
             return response()->json([
                 'message' => 'Failed to transact',
-                'Error' => $exception->getMessage(),
+                'error' => $exception->getMessage(),
                 'data' => []
             ], $exception->getCode());
         } catch (ErrorOnMysqlException $exception) {
             //TODO: write exception in a log driver
             return response()->json([
                 'message' => 'Failed to transact',
-                'Error' => "Service unavailable try again later",
+                'error' => "Service unavailable try again later",
                 'data' => []
             ], $exception->getCode());
         } catch (\Exception $exception) {
             //TODO: write exception in a log driver
             return response()->json([
                 'message' => 'Failed to transact',
-                'Error' => 'Failed to transact',
+                'error' => 'Failed to transact',
                 'data' => []
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
