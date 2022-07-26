@@ -25,4 +25,13 @@ class AccountEloquentRepository implements AccountRepositoryInterface
             throw new ErrorOnMysqlException();
         }
     }
+
+    public function insert(array $data): array
+    {
+        try {
+            return Account::create($data)->toArray();
+        } catch (\Exception $exception) {
+            throw new ErrorOnMysqlException();
+        }
+    }
 }

@@ -20,4 +20,11 @@ interface AccountRepositoryInterface
      * @throws ErrorOnMysqlException
      */
     public function updateWhere(array $data, array $where): bool;
+
+    /**
+     * @param array $data
+     * @return array
+     * @throws ErrorOnMysqlException
+     */
+    public function insert(array $data): array;
 }
