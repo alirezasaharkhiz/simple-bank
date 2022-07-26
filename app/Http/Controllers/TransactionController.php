@@ -28,6 +28,7 @@ class TransactionController extends Controller
      */
     public function makeTransaction(MakeTransactionRequest $request): JsonResponse
     {
+        //TODO: user can transact to his/her own card (do something!!!)
         try {
             //TODO: develop request service
             $request = $request->validated();
